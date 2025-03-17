@@ -15,7 +15,7 @@ spec:
         app: cicd-java-maven
     spec:
       containers:
-        - image: gopigundeboyina/mavencicd
+        - image: katamreddy/mavencicd
           imagePullPolicy: Always
           name: cicd-java-maven
           ports:
@@ -46,4 +46,4 @@ spec:
       targetPort: 8080
   selector:
     app: cicd-java-maven
-  type: LoadBalancer
+  type: NodePort
