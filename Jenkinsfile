@@ -3,6 +3,11 @@ pipeline {
     	tools {
 		maven "mvn"
        	}
+environment {
+    DOCKERHUB_CREDENTIALS=credentials('dockerhub')
+    AWS_DEFAULT_REGION = 'ap-south-1'
+    BUILD_NUMBER = "${env.BUILD_NUMBER}"
+  }
   stages {
     stage("Maven Build") {
       steps {
