@@ -23,6 +23,20 @@ environment {
           sh "docker push katamreddy/mavencicd:$BUILD_NUMBER"
         }
       }
-    }	  
+    }	 
+stage("Apply the Kubernetes files") {
+      steps {
+        script {
+            sh 'aws s3 ls'
+            sh 'aws eks update-kubeconfig --region us-east-1 --name eksdemo1'
+            sh 'kubectl get pods'
+            // Update image in Deployment.yaml
+            sh "sed -i 's|image: .*|image: gopigundeboyina/mavencicd:$BUILD_NUMBER|g' kubernetes/Deployment.yaml"
+            // Apply updated Deployment.yaml
+            sh 'kubectl apply -f kubernetes/Deployment.yaml'
+          }
+        }
+      }
+    }
 }
 }
