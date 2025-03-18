@@ -37,6 +37,5 @@ stage("Apply the Kubernetes files") {
           }
         }
       }
-    }
 }
 }
