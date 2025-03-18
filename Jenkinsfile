@@ -7,6 +7,7 @@ environment {
     DOCKERHUB_CREDENTIALS=credentials('dockerhub')
     BUILD_NUMBER = "${env.BUILD_NUMBER}"
     AWS_DEFAULT_REGION = 'us-east-1'
+    PATH = "${env.HOME}/bin:${env.PATH}"
   }
   stages {
     stage("Maven Build") {
